@@ -15,9 +15,13 @@
                 </div>
             }
             <!-- Button to add a new lesson -->
-            <div>
-                <a asp-controller="Lesson" asp-action="Upsert" asp-route-courseId="@Model.CourseId" class="btn btn-success btn-block">Add New Lesson</a>
-            </div>
+            @if ((User.Claims.FirstOrDefault(c => c.Type == "role")?.Value.Equals("Instructor") ?? false) ||
+            (User.Claims.FirstOrDefault(c => c.Type == "role")?.Value.Equals("Admin") ?? false))
+            {
+                <div>
+                    <a asp-controller="Lesson" asp-action="Upsert" asp-route-courseId="@Model.CourseId" class="btn btn-success btn-block">Add New Lesson</a>
+                </div>
+            }
         </div>
         <div class="col-md-9">
             <!-- Display Lesson content here -->
@@ -99,14 +103,21 @@
                             lessonContentDiv.appendChild(contentList);
                         }
                         // Generate the "Add New Content" button for the selected lesson
+                        // if ((User.Claims.FirstOrDefault(c => c.Type == "role")?.Value.Equals("Instructor") ?? false) || (User.Claims.FirstOrDefault(c => c.Type == "role")?.Value.Equals("Admin") ?? false)) {
+                        // }
+
+
                         var addContentButton = document.createElement('button');
                         addContentButton.className = 'btn btn-primary';
                         addContentButton.textContent = 'Add New Content';
                         addContentButton.onclick = function () {
                             // Redirect to the content creation page with the selected lesson ID
-                            window.location.href = '/Content/Upsert?lessonId=' + data.LessonId;
+
+                                window.location.href = '/Content/Upsert?lessonId=' + data.LessonId;
+                            
                         };
                         lessonContentDiv.appendChild(addContentButton);
+
                     }
                 },
                 error: function (error) {
