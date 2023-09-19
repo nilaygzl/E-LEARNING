@@ -197,6 +197,7 @@ namespace LMS.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Email")
+                        
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -206,7 +207,7 @@ namespace LMS.DataAccess.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -218,9 +219,10 @@ namespace LMS.DataAccess.Migrations
                         new
                         {
                             UserId = 1,
-                            Password = "Test",
+                            Password = "iHDiGxN55UA82RwZm/gEQi44u99W6dH742Ru/PH4NNLFoiaJulm/Jd7fYN3sXxQJ",
                             Role = 0,
-                            UserName = "TestAdmin"
+                            Email = "test@email.com",
+                            Name = "TestAdmin"
                         });
                 });
 

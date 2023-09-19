@@ -18,7 +18,7 @@ namespace LMS.DataAccess.Migrations
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false)
@@ -124,8 +124,8 @@ namespace LMS.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "Email", "Password", "Role", "UserName" },
-                values: new object[] { 1, null, "Test", 0, "TestAdmin" });
+                columns: new[] { "UserId", "Email", "Password", "Role", "Name" },
+                values: new object[] { 1, "test@email.com", "iHDiGxN55UA82RwZm/gEQi44u99W6dH742Ru/PH4NNLFoiaJulm/Jd7fYN3sXxQJ", 0, "TestAdmin" });// Password : Test dir
 
             migrationBuilder.InsertData(
                 table: "Courses",

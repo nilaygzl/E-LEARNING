@@ -41,7 +41,7 @@ namespace LMS.DataAccess
                 new User
                 {
                     UserId = 1,
-                    UserName = "TestAdmin",
+                    Name = "TestAdmin",
                     Password = "Test",
                     Role = UserRole.Admin
                 } 
